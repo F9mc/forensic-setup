@@ -1,0 +1,32 @@
+---
+
+- name: Clone Volatility 2
+  ansible.windows.git:
+    repo: https://github.com/volatilityfoundation/volatility.git
+    dest: C:\Tool\MemoryAnalysis\volatility
+
+- name: Clone Volatility 3
+  ansible.windows.git:
+    repo: https://github.com/volatilityfoundation/volatility3.git
+    dest: C:\Tool\MemoryAnalysis\volatility3
+
+- name: Install Volatility3 packages
+  ansible.windows.win_shell: |
+    python3 -m pip install --user -e ".[full]"
+  args:
+    chdir: C:\Tool\MemoryAnalysis\volatility3
+
+- name: Clone Kape
+  ansible.windows.git:
+    repo: https://github.com/EricZimmerman/KapeFiles.git
+    dest: C:\Tool
+
+- name: Clone Oletools
+  ansible.windows.git:
+    repo: https://github.com/decalage2/oletools.git
+    dest: C:\Tool\MalwareAnalysis
+
+- name: Get MemProcFs
+  ansible.windows.win_get_url:
+    url: https://github.com/ufrisk/MemProcFS/releases/download/v5.14/MemProcFS_files_and_binaries_v5.14.13-win_x64-20250520.zip
+    dest: C:\Tool\MemoryAnalysis\MemProcFS.zip

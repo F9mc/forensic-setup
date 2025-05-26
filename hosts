@@ -1,0 +1,2 @@
+[vm]
+remote_vm ansible_host=192.168.226.128 ansible_user=windows

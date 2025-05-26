@@ -1,0 +1,13 @@
+---
+- name: Bootstrap environment
+  hosts: vm
+  tasks:
+    - name: Base setup
+      when: ansible_distribution == "Windows"
+      import_role:
+        name: base_setup
+
+    - name: Git Tools
+      when: ansible_distribution == "Windows"
+      import_role:
+        name: git_tools

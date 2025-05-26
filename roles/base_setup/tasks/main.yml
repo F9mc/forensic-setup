@@ -1,0 +1,62 @@
+---
+- name: Create C:\Tool
+  win_file:
+    name: C:\Tool
+    state: directory
+
+- name: Ensure C:\Tool subfolders exist
+  win_file:
+    path: "C:\\Tool\\{{ item }}"
+    state: directory
+  loop:
+    - Misc
+    - MemoryAnalysis
+    - MalwareAnalysis
+    - LogsAnalysis
+    - Nirsoft
+    - Zimmerman
+    - Arsenal Recon
+
+- name: Ensure Chocolatey installed from internal repo
+  win_chocolatey:
+    name: chocolatey
+    state: present
+    source: C:\Temp\ChocolateyInstall.ps1
+
+
+- name: Install packages from Chocolatey
+  win_chocolatey_facts:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - git
+    - python3
+    - python3-pip
+    - python3-virtualenv
+    - python2
+    - vscode
+    - googlechrome
+    - firefox
+    - 7zip.install
+    - ripgrep
+    - powertoys
+    - sysinternals
+    - dotnet6-sdk
+
+- name: Install python libraries
+  win_shell: |
+    pip install --user uv
+
+- name: Copy Get-ZimmermanTools.ps1
+  win_copy:
+    src: scripts/Get-ZimmermanTools.ps1
+    dest: C:\Tool\Zimmerman\Get-ZimmermanTools.ps1
+    
+- name: Install Zimmerman Tools
+  win_shell: |
+    C:\Tool\Zimmerman\Get-ZimmermanTools.ps1
+
+- name: Copy ChocolateyInstall.ps1
+  win_copy:
+    src: scripts/ChocolateyInstall.ps1
+    dest: C:\Temp\ChocolateyInstall.ps1
