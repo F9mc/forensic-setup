@@ -1,21 +1,4 @@
 ---
-- name: Check if KapeFiles repo exists
-  ansible.windows.win_stat:
-    path: C:\Tool\KapeFiles\.git
-  register: kapegit
-
-- name: Clone KapeFiles
-  ansible.windows.win_shell: |
-    git clone --branch master https://github.com/EricZimmerman/KapeFiles.git C:\Tool\KapeFiles
-  when: not kapegit.stat.exists
-
-- name: Pull latest KapeFiles
-  ansible.windows.win_shell: |
-    git -C C:\Tool\KapeFiles pull
-  when: kapegit.stat.exists
-  register: result
-  changed_when: "'Already up to date.' not in result.stdout"
-
 - name: Copy Zimmerman net6 tools into the module folder
   ansible.windows.win_copy:
     src: C:\Tool\Zimmerman\net6\
@@ -40,20 +23,3 @@
     remote_src: false
     recursive: true
     ignore_errors: true
-
-- name: Check if Hayabusa repo exists
-  ansible.windows.win_stat:
-    path: C:\Tool\KapeFiles\Modules\bin\hayabusa\.git
-  register: hayabusa_git
-
-- name: Clone Hayabusa
-  ansible.windows.win_shell: |
-    git clone --branch main https://github.com/Yamato-Security/hayabusa.git C:\Tool\KapeFiles\Modules\bin\hayabusa
-  when: not hayabusa_git.stat.exists
-
-- name: Pull latest Hayabusa
-  ansible.windows.win_shell: |
-    git -C C:\Tool\KapeFiles\Modules\bin\hayabusa pull
-  when: hayabusa_git.stat.exists
-  register: result
-  changed_when: "'Already up to date.' not in result.stdout"

@@ -8,3 +8,10 @@
   loop: "{{ tool_subfolders }}"
   register: result
   failed_when: false
+
+
+- name: Copy README.txt to C:\Tool
+  ansible.windows.win_copy:
+    src: "README.md"
+    dest: "C:\\Tool\\README.md"
+    remote_src: false

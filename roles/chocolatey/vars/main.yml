@@ -17,3 +17,6 @@ chocolatey_packages:
   - wireshark
   - openvpn
   - jq
+  - rust
+  - go
+  - mingw

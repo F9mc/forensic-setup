@@ -32,8 +32,8 @@
 - name: Include Sysinternals tasks
   ansible.builtin.import_tasks: sysinternals.yml
 
-- name: Include Volatility tasks
-  ansible.builtin.import_tasks: volatility.yml
+- name: Include build tasks
+  ansible.builtin.import_tasks: build_repo.yml
 
 - name: Include Zimmerman tasks
   ansible.builtin.import_tasks: zimmerman.yml

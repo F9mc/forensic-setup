@@ -24,13 +24,13 @@
 
 - name: Add new paths while preserving existing ones
   ansible.windows.win_path:
-    elements: "{{ (current_path.stdout | regex_replace('[\r\n]*', '') | split(';') + path_variables) | unique | sort }}"
+    elements: "{{ (current_path.stdout | regex_replace('[\r\n]*', '') | split(';') + path_variables) | sort | unique }}"
     scope: machine
     state: present
 
 - name: Set Powershell Aliases
   ansible.windows.win_shell: |
-    Set-Alias -Name "{{ item.alias }}" -Value "{{ item.value }}" -Option AllScope -Force
+    Set-Alias -Name "{{ item.alias }}" -Value "{{ item.value }}" -Option AllScope -scope Global -Force
   loop: "{{ powershell_aliases }}"
   when: powershell_aliases is defined and powershell_aliases | length > 0
   changed_when: false

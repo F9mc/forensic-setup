@@ -1,0 +1,14 @@
+---
+- name: Install Volatility3 packages
+  ansible.windows.win_shell: python3.11.exe -m pip install --user -e .[full]
+  args:
+    chdir: C:\Tool\MemoryAnalysis\volatility3
+  register: result
+  changed_when:
+    - "'Found existing installation' not in result.stdout"
+
+- name: Install Volatility2 packages
+  ansible.windows.win_shell: C:\Python27\python.exe setup.py install
+  args:
+    chdir: C:\Tool\MemoryAnalysis\volatility
+  changed_when: false

@@ -1,17 +1,29 @@
 ---
 git_repo:
+  - name: KapeFiles
+    repo: https://github.com/EricZimmerman/KapeFiles.git
+    path: C:\Tool\KapeFiles
+    branch: master
+  - name: Volatility3
+    repo: https://github.com/volatilityfoundation/volatility3.git
+    path: C:\Tool\MemoryAnalysis\volatility3
+    branch: stable
+  - name: Volatility2
+    repo: https://github.com/volatilityfoundation/volatility.git
+    path: C:\Tool\MemoryAnalysis\volatility
+    branch: master
   - name: ALEAPP
     repo: https://github.com/abrignoni/ALEAPP
     path: C:\Tool\MobileArtefacts\ALEAPP
     branch: main
-  - name: Yara
-    repo: https://github.com/VirusTotal/yara
-    path: C:\Tool\MalwareAnalysis\yara
-    branch: master
+  - name: Yara-x
+    repo: https://github.com/VirusTotal/yara-x
+    path: C:\Tool\MalwareAnalysis\yara-x
+    branch: main
   - name: SigmaHQ
     repo: https://github.com/SigmaHQ/sigma
     path: C:\Tool\LogsAnalysis\sigma
-    branch: master    
+    branch: master
   - name: LogonTracer
     repo: https://github.com/JPCERTCC/LogonTracer
     path: C:\Tool\LogsAnalysis\sigma
@@ -19,4 +31,16 @@ git_repo:
   - name: RegRipper
     repo: https://github.com/keydet89/RegRipper3.0
     path: C:\Tool\RegistryAnalysis\RegRipper
+    branch: master
+  - name: Hayabusa
+    repo: https://github.com/Yamato-Security/hayabusa.git
+    path: c:\Tool\LogsAnalysis\hayabusa
+    branch: main
+  - name: chainsaw
+    repo: https://github.com/WithSecureLabs/chainsaw
+    path: C:\Tool\LogsAnalysis\chainsaw
+    branch: master
+  - name: EXTX-SAMPLES
+    repo: https://github.com/sbousseaden/EVTX-ATTACK-SAMPLES
+    path: C:\Tool\LogsAnalysis\EVTX-ATTACK-SAMPLES
     branch: master
