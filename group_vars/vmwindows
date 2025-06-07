@@ -1,0 +1,29 @@
+---
+tool_subfolders:
+  - Misc
+  - Misc\Nirsoft
+  - MemoryAnalysis
+  - MalwareAnalysis
+  - RegistryAnalysis
+  - MobileArtefacts
+  - LogsAnalysis
+  - Zimmerman
+  - Arsenal Recon
+path_variables:
+  - C:\Tool\Misc\
+  - C:\Tool\SysinternalsSuite\
+  - C:\Tool\KapeFiles\
+  - C:\Tool\Zimmerman\net6\
+  - C:\Tool\Zimmerman\net9\
+  - C:\Python27\
+  - C:\Python311\
+  - C:\Tool\Arsenal Recon\Arsenal-Image-Mounter\
+powershell_aliases:
+  - alias: "python3"
+    value: "C:\\Python311\\python3.11.exe"
+  - alias: "python2"
+    value: "C:\\Python27\\python.exe"
+  - alias: grep
+    value: "C:\\ProgramData\\chocolatey\\bin\\rg.exe"
+  - alias: cat
+    value: "C:\\ProgramData\\chocolatey\\bin\\bat.exe"

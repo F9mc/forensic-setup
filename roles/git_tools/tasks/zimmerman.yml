@@ -1,0 +1,43 @@
+---
+- name: "Check if dotnet 9 is installed"
+  ansible.windows.win_shell: |
+    $ErrorActionPreference = 'Stop'
+    $dotnetVersion = & 'C:\Program Files\dotnet\dotnet.exe' --list-sdks
+    if ($dotnetVersion -match '9\.0\.300') {
+      echo '9.0.300 is installed'
+    } else {
+      echo '9.0.300 is not installed'
+      exit 1
+    }
+  register: dotnet_check
+  changed_when: false
+  failed_when:
+    - "not '9.0.300 is installed' in dotnet_check.stdout"
+    - "not '9.0.300 is not installed' in dotnet_check.stdout"
+
+- name: Download .NET 9 SDK Installer
+  ansible.windows.win_get_url:
+    url: https://builds.dotnet.microsoft.com/dotnet/Sdk/9.0.300/dotnet-sdk-9.0.300-win-x64.exe
+    dest: C:\Temp\dotnet-sdk-9.0.100-win-x64.exe
+  when: dotnet_check.stdout == '9.0.300 is not installed'
+
+- name: Install .NET 9 SDK
+  ansible.windows.win_package:
+    path: C:\Temp\dotnet-sdk-9.0.100-win-x64.exe
+    arguments: /install /quiet /norestart
+    state: present
+  when: dotnet_check.stdout == '9.0.300 is not installed'
+
+- name: Get Zimmerman Tools
+  ansible.windows.win_get_url:
+    url: https://raw.githubusercontent.com/EricZimmerman/Get-ZimmermanTools/refs/heads/master/Get-ZimmermanTools.ps1
+    dest: C:\Tool\Zimmerman\Get-ZimmermanTools.ps1
+
+- name: Install Zimmerman Tools
+  ansible.windows.win_shell: |
+    C:\Tool\Zimmerman\Get-ZimmermanTools.ps1
+  register: result
+  changed_when:
+    - "'All files current. Exiting.' not in result.stdout"
+  args:
+    chdir: C:\Tool\Zimmerman

@@ -1,0 +1,28 @@
+---
+- name: Bootstrap environment
+  hosts: all
+  tasks:
+    - name: "Base setup"
+      when: ansible_distribution ~ '^(?!Windows).*'
+      ansible.builtin.import_role:
+        name: base_setup
+
+    - name: "Chocolatey"
+      when: ansible_distribution ~ '^(?!Windows).*'
+      ansible.builtin.import_role:
+        name: chocolatey
+
+    - name: "Git Tools"
+      when: ansible_distribution ~ '^(?!Windows).*'
+      ansible.builtin.import_role:
+        name: git_tools
+
+    - name: "Nirsoft"
+      when: ansible_distribution ~ '^(?!Windows).*'
+      ansible.builtin.import_role:
+        name: nirsoft
+
+    - name: "File Setup"
+      when: ansible_distribution ~ '^(?!Windows).*'
+      ansible.builtin.import_role:
+        name: file_setup

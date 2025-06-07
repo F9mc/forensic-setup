@@ -1,0 +1,48 @@
+---
+- name: Check if Volatility 3 repo exists
+  ansible.windows.win_stat:
+    path: C:\Tool\MemoryAnalysis\volatility3\.git
+  register: volatility3_git
+
+- name: Clone Volatility 3
+  ansible.windows.win_shell: |
+    git clone --branch stable https://github.com/volatilityfoundation/volatility3.git C:\Tool\MemoryAnalysis\volatility3
+  when: not volatility3_git.stat.exists
+
+- name: Pull latest Volatility 3
+  ansible.windows.win_shell: |
+    git -C C:\Tool\MemoryAnalysis\volatility3 pull
+  when: volatility3_git.stat.exists
+  register: result
+  changed_when: "'Already up to date.' not in result.stdout"
+
+- name: Install Volatility3 packages
+  ansible.windows.win_shell: python3.11.exe -m pip install --user -e .[full]
+  args:
+    chdir: C:\Tool\MemoryAnalysis\volatility3
+  register: result
+  changed_when:
+    - "'Found existing installation' not in result.stdout"
+
+- name: Check if Volatility 2 repo exists
+  ansible.windows.win_stat:
+    path: C:\Tool\MemoryAnalysis\volatility\.git
+  register: volatility2_git
+
+- name: Clone Volatility 2
+  ansible.windows.win_shell: |
+    git clone --branch master https://github.com/volatilityfoundation/volatility.git C:\Tool\MemoryAnalysis\volatility
+  when: not volatility2_git.stat.exists
+
+- name: Pull latest Volatility 2
+  ansible.windows.win_shell: |
+    git -C C:\Tool\MemoryAnalysis\volatility pull
+  when: volatility2_git.stat.exists
+  register: result
+  changed_when: "'Already up to date.' not in result.stdout"
+
+- name: Install Volatility2 packages
+  ansible.windows.win_shell: C:\Python27\python.exe setup.py install
+  args:
+    chdir: C:\Tool\MemoryAnalysis\volatility
+  changed_when: false

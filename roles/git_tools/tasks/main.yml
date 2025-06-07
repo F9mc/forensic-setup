@@ -1,0 +1,42 @@
+---
+
+- name: "Check if repo exists"
+  ansible.windows.win_stat:
+    path: '{{ item.path }}\.git'
+  register: repo_exist
+  loop: "{{ git_repo }}"
+  loop_control:
+    label: "{{ item.name }}"
+    index_var: index
+
+- name: "Clone repo"
+  ansible.windows.win_shell: |
+    git clone --branch {{ item.branch }} {{ item.repo }} {{ item.path }}
+  when: "not repo_exist.results[index].stat.exists"
+  loop: "{{ git_repo }}"
+  loop_control:
+    label: "{{ item.name }}"
+    index_var: index
+
+- name: "Pull repo"
+  ansible.windows.win_shell: |
+    git -C {{ item.path }} pull
+  when: "repo_exist.results[index].stat.exists"
+  register: result
+  changed_when: "'Already up to date.' not in result.stdout"
+  loop: "{{ git_repo }}"
+  loop_control:
+    label: "{{ item.name }}"
+    index_var: index
+
+- name: Include Sysinternals tasks
+  ansible.builtin.import_tasks: sysinternals.yml
+
+- name: Include Volatility tasks
+  ansible.builtin.import_tasks: volatility.yml
+
+- name: Include Zimmerman tasks
+  ansible.builtin.import_tasks: zimmerman.yml
+
+- name: Include Kape tasks
+  ansible.builtin.import_tasks: kape.yml

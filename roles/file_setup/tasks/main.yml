@@ -1,0 +1,10 @@
+---
+- name: Copy tool folders and contents to C:\Tool
+  ansible.windows.win_copy:
+    src: "binaries/{{ item }}/"
+    dest: "C:\\Tool\\{{ item }}"
+    remote_src: false
+    recursive: true
+  loop: "{{ tool_subfolders }}"
+  register: result
+  failed_when: false

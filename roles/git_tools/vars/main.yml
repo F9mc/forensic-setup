@@ -1,0 +1,22 @@
+---
+git_repo:
+  - name: ALEAPP
+    repo: https://github.com/abrignoni/ALEAPP
+    path: C:\Tool\MobileArtefacts\ALEAPP
+    branch: main
+  - name: Yara
+    repo: https://github.com/VirusTotal/yara
+    path: C:\Tool\MalwareAnalysis\yara
+    branch: master
+  - name: SigmaHQ
+    repo: https://github.com/SigmaHQ/sigma
+    path: C:\Tool\LogsAnalysis\sigma
+    branch: master    
+  - name: LogonTracer
+    repo: https://github.com/JPCERTCC/LogonTracer
+    path: C:\Tool\LogsAnalysis\sigma
+    branch: master
+  - name: RegRipper
+    repo: https://github.com/keydet89/RegRipper3.0
+    path: C:\Tool\RegistryAnalysis\RegRipper
+    branch: master

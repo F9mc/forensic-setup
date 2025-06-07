@@ -1,0 +1,39 @@
+---
+- name: Create C:\Tool
+  ansible.windows.win_file:
+    name: C:\Tool
+    state: directory
+
+- name: Ensure C:\Tool subfolders exist
+  ansible.windows.win_file:
+    path: "C:\\Tool\\{{ item }}"
+    state: directory
+  loop: "{{ tool_subfolders }}"
+
+  ignore_errors: true
+  register: result
+  failed_when:
+    - "result.strderr is defined and result.stderr != ''"
+    - "not 'Could not find or access' in result.stderr"
+
+- name: "Get path"
+  ansible.windows.win_shell: |
+    $env:path
+  register: current_path
+  changed_when: false
+
+- name: Add new paths while preserving existing ones
+  ansible.windows.win_path:
+    elements: "{{ (current_path.stdout | regex_replace('[\r\n]*', '') | split(';') + path_variables) | unique | sort }}"
+    scope: machine
+    state: present
+
+- name: Set Powershell Aliases
+  ansible.windows.win_shell: |
+    Set-Alias -Name "{{ item.alias }}" -Value "{{ item.value }}" -Option AllScope -Force
+  loop: "{{ powershell_aliases }}"
+  when: powershell_aliases is defined and powershell_aliases | length > 0
+  changed_when: false
+
+- name: Include bloat tasks
+  ansible.builtin.import_tasks: bloat.yml

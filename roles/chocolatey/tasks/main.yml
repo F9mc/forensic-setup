@@ -1,0 +1,9 @@
+---
+- name: Include Python tasks
+  ansible.builtin.import_tasks: python_setup.yml
+
+- name: "Install packages from Chocolatey"
+  chocolatey.chocolatey.win_chocolatey:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ chocolatey_packages }}"

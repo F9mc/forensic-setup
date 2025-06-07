@@ -1,0 +1,41 @@
+---
+- name: Check if tool exists
+  ansible.windows.win_stat:
+    path: 'C:\Tool\Misc\Nirsoft\{{ item.name }}\{{ item.name }}.exe'
+  register: tool_exist
+  loop: "{{ nirsoft_tools }}"
+  loop_control:
+    label: "{{ item.name }}"
+    index_var: index
+
+- name: Download tool
+  ansible.windows.win_get_url:
+    url: "{{ item.zip_url }}"
+    dest: C:\Windows\Temp\
+  when: not tool_exist.results[index].stat.exists
+  loop: "{{ nirsoft_tools }}"
+  loop_control:
+    label: "{{ item.name }}"
+    index_var: index
+
+- name: Unzip tool
+  community.windows.win_unzip:
+    src: "C:\\Windows\\Temp\\{{ item.zip_url | basename }}"
+    dest: 'C:\Tool\Misc\Nirsoft\{{ item.name }}'
+    remote_src: true
+  when: not tool_exist.results[index].stat.exists
+  loop: "{{ nirsoft_tools }}"
+  loop_control:
+    label: "{{ item.name }}"
+    index_var: index
+
+- name: Create a symbolic link in KapeFile/Modules/bin
+  ansible.windows.win_copy:
+    src: 'C:\Tool\Misc\Nirsoft\{{ item.name }}\{{ item.name }}.exe'
+    dest: 'C:\Tool\KapeFiles\Modules\bin\{{ item.name }}.exe'
+    stat: link
+    remote_src: true
+  loop: "{{ nirsoft_tools }}"
+  loop_control:
+    label: "{{ item.name }}"
+    index_var: index

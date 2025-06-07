@@ -1,0 +1,27 @@
+---
+- name: Install python2
+  chocolatey.chocolatey.win_chocolatey:
+    name: python2
+    state: present
+    version: "{{ python2_version }}"
+
+- name: Install python3
+  chocolatey.chocolatey.win_chocolatey:
+    name: python3
+    state: present
+    version: "{{ python3_version }}"
+
+- name: Update pip
+  ansible.windows.win_shell: C:\python311\python.exe -m pip install --upgrade pip
+  register: result
+  changed_when:
+    - "'Requirement already satisfied' not in result.stdout"
+
+- name: "Install python libraries"
+  ansible.windows.win_shell: "python3.11.exe -m pip install --user {{ item }}"
+  loop:
+    - uv
+    - oletools
+  register: result
+  changed_when:
+    - "'Requirement already satisfied' not in result.stdout"

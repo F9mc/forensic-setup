@@ -1,0 +1,16 @@
+---
+- name: Disable OneDrive autostart
+  ansible.windows.win_regedit:
+    path: HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
+    name: OneDrive
+    data: ""
+    type: string
+    state: present
+
+- name: Disable bing search
+  ansible.windows.win_regedit:
+    path: HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Search
+    name: BingSearchEnabled
+    data: 0
+    type: dword
+    state: present

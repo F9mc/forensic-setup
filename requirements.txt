@@ -1,0 +1,3 @@
+ansible
+pypsrp<=1.0.0  # for psrp
+pywinrm>=0.4.0  # for winrm

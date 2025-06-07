@@ -1,0 +1,19 @@
+---
+- name: Check if the folder C:\Tool\SysinternalsSuite exists
+  ansible.windows.win_stat:
+    path: C:\Tool\SysinternalsSuite
+  register: sysinternals_folder
+
+- name: Get Sysinternals Suite
+  ansible.windows.win_get_url:
+    url: https://download.sysinternals.com/files/SysinternalsSuite.zip
+    dest: C:\Windows\Temp\SysinternalsSuite.zip
+  when: not sysinternals_folder.stat.exists
+
+- name: Unzip Sysinternals Suite
+  community.windows.win_unzip:
+    src: C:\Windows\Temp\SysinternalsSuite.zip
+    dest: C:\Tool\SysinternalsSuite
+    remove_archive: true
+  changed_when: false
+  when: not sysinternals_folder.stat.exists

@@ -1,0 +1,7 @@
+binaries/
+hosts
+venv
+uvenv
+inventory
+*.exe
+*.msi

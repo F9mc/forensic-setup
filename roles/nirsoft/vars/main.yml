@@ -1,0 +1,6 @@
+---
+nirsoft_tools:
+  - name: browsinghistoryview
+    zip_url: https://www.nirsoft.net/utils/browsinghistoryview-x64.zip
+  - name: OutlookAttachView
+    zip_url: https://www.nirsoft.net/utils/outlookattachview-x64.zip
