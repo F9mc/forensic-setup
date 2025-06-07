@@ -12,3 +12,42 @@
   args:
     chdir: C:\Tool\MemoryAnalysis\volatility
   changed_when: false
+
+- name: Check if hayabusa.exe exists
+  ansible.windows.win_stat:
+    path: 'C:\Tool\LogsAnalysis\hayabusa\hayabusa.exe'
+  register: hayabusa_exist
+
+- name: Build hayabusa if it does not exist
+  ansible.windows.win_shell: cargo build --release
+  args:
+    chdir: C:\Tool\LogsAnalysis\hayabusa
+  when: not hayabusa_exist.stat.exists
+  register: build_result
+  changed_when: "'Build completed successfully' in build_result.stdout"
+
+- name: Re-check if hayabusa.exe exists after build
+  ansible.windows.win_stat:
+    path: 'C:\Tool\LogsAnalysis\hayabusa\target\release\hayabusa.exe'
+  register: hayabusa_exist_after_build
+  when: not hayabusa_exist.stat.exists
+
+- name: Copy hayabusa.exe from target repo
+  ansible.windows.win_copy:
+    src: 'C:\Tool\LogsAnalysis\hayabusa\target\release\hayabusa.exe'
+    dest: 'C:\Tool\LogsAnalysis\hayabusa\hayabusa.exe'
+    remote_src: true
+  when: build_result is defined
+
+- name: Copy hayabusa.exe to KAPE modules if it exists after build
+  ansible.windows.win_copy:
+    src: 'C:\Tool\LogsAnalysis\hayabusa\hayabusa.exe'
+    dest: 'C:\Tool\KapeFiles\Modules\bin\hayabusa.exe'
+    remote_src: true
+  when: hayabusa_exist.stat.exists or (hayabusa_exist_after_build is defined and hayabusa_exist_after_build.stat.exists)
+
+- name: Update hayabusa rules if hayabusa.exe exists
+  ansible.windows.win_shell: 'C:\Tool\LogsAnalysis\hayabusa\hayabusa.exe update-rules'
+  args:
+    chdir: C:\Tool\LogsAnalysis\hayabusa
+  when: hayabusa_exist.stat.exists or (hayabusa_exist_after_build is defined and hayabusa_exist_after_build.stat.exists)

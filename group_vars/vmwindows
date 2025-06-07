@@ -15,7 +15,17 @@ path_variables:
   - C:\Tool\KapeFiles\
   - C:\Tool\Zimmerman\net6\
   - C:\Tool\Zimmerman\net9\
-  - C:\Tool\Zimmerman\net9\*\
+  - C:\Tool\Zimmerman\net9\EvtxeCmd\
+  - C:\Tool\Zimmerman\net9\EZViewer\
+  - C:\Tool\Zimmerman\net9\iisGeolocate\
+  - C:\Tool\Zimmerman\net9\JumpListExplorer\
+  - C:\Tool\Zimmerman\net9\MFTExplorer\
+  - C:\Tool\Zimmerman\net9\RECmd\
+  - C:\Tool\Zimmerman\net9\RegistryExplorer\
+  - C:\Tool\Zimmerman\net9\SDBExplorer\
+  - C:\Tool\Zimmerman\net9\ShellBagsExplorer\
+  - C:\Tool\Zimmerman\net9\SQLECmd\
+  - C:\Tool\Zimmerman\net9\TimelineExplorer\
   - C:\Python27\
   - C:\Python311\
   - C:\Tool\Arsenal Recon\Arsenal-Image-Mounter\
