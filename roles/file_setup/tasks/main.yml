@@ -10,6 +10,14 @@
   failed_when: false
 
 
+- name: Render bookmarks file
+  ansible.windows.win_template:
+    src: "templates/bookmarks.html.j2"
+    dest: "C:\\Tool\\bookmarks.html"
+    remote_src: false
+    force: true
+
+
 - name: Copy README.txt to C:\Tool
   ansible.windows.win_copy:
     src: "README.md"

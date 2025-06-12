@@ -1,0 +1,110 @@
+---
+bookmarks:
+  - Windows:
+      icon: fa-brands fa-windows
+      links:
+        - https://github.com/Psmths/windows-forensic-artifacts
+      sections:
+        - Process:
+            links:
+              - echotrail.com
+              - lolbas-project.github.io
+              - gtfobins.com
+              - wtfbins.wtf
+              - lolrmm.io
+        - EventId:
+            links:
+              - eventid.com
+              - https://learn.microsoft.com/fr-fr/sysinternals/downloads/sysmon
+        - Registry:
+            links:
+              - https://github.com/Ahmed-AL-Maghraby/Windows-Registry-Analysis-Cheat-Sheet
+              - https://www.cybertriage.com/blog/windows-registry-forensics-cheat-sheet-2025/
+  - Cloud:
+      icon: fa-solid fa-cloud
+      sections:
+        - Azure:
+            links:
+              - portal.azure.com
+              - security.microsoft.com
+              - intune.microsoft.com
+              - admin.exchange.microsoft.com
+              - mspotals.io
+        - AWS:
+            links:
+              - aws.amazon.com
+              - console.aws.amazon.com
+              - securityhub.console.aws.amazon.com
+              - console.cloudwatch.aws.amazon.com
+              - console.cloudtrail.aws.amazon.com
+  - Forensic:
+      icon: fa-solid fa-magnifying-glass
+      sections:
+        - CheatSheets:
+            links:
+              - https://downloads.volatilityfoundation.org/releases/2.4/CheatSheet_v2.4.pdf
+              - artefacts.help
+        - Collect:
+            links:
+              - https://github.com/EricZimmerman/KapeFiles
+              - https://github.com/OWNsecurity/fastir_artifacts
+              - https://github.com/invictus-ir/Microsoft-Extractor-Suite
+        - Recover:
+            links:
+              - https://www.nomoreransom.org/fr/index.html
+  - IOCs:
+      icon: fa-solid fa-shield-alt
+      links:
+        - virustotal.com
+        - cybergordon.com
+        - metadefender.com
+        - otx.alienvault.com
+        - pulsedive.com
+        - cyberchef.org
+      sections:
+        - IPs:
+            links:
+              - Abuseip.com
+              - IPinfo.io
+        - Domain_and_url:
+            links:
+              - Whois.com
+              - DNSdumpster.com
+              - viewdns.info
+              - O365atp.com
+              - scanqr.org
+              - wheregoes.com
+              - urlscan.io
+              - fr.whois-history.whoisxmlapi.com
+        - File_and_hash:
+            links:
+              - hybrid-analysis.com
+              - app.any.run
+              - malwarebazaar.eu
+              - filescan.io
+              - vx-underground.com
+        - Email:
+            links:
+              - mha.azure.com
+              - haveibeenpwned.com
+        - Azure_Apps:
+            links:
+              - https://huntresslabs.github.io/rogueapps/
+              - https://www.allarounddefender.io/home
+  - CTF:
+      icon: fa-solid fa-gamepad
+      links:
+        - hackthebox.com
+        - https://cyberdefenders.org/blueteam-ctf-challenges/?cta=navbar-sign-in&origin=%2Fblueteam-ctf-challenges%2F&status=in-progress%2Cnot-started&categories=endpoint-forensics&os=Windows&sort=easiest-to-hardest
+  - AI:
+      icon: fa-solid fa-robot
+      links:
+        - chatgpt.com
+        - phind.com
+        - mistral.com
+
+  - Awersomes_lists:
+      icon: fa-solid fa-list
+      links:
+        - https://github.com/cugu/awesome-forensics
+        - https://github.com/mthcht/awesome-lists/tree/main
