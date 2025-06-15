@@ -6,6 +6,7 @@ tool_subfolders:
   - MalwareAnalysis
   - RegistryAnalysis
   - MobileArtefacts
+  - ThreatIntel
   - LogsAnalysis
   - Zimmerman
   - Arsenal Recon

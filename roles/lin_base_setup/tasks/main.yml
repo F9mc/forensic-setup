@@ -1,0 +1,32 @@
+---
+- name: Create C:\Tool on debian
+  become: true
+  become_user: root
+  ansible.builtin.file:
+    path: /tool
+    state: directory
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: '0755'
+
+
+- name: Ensure C:\Tool subfolders exist
+  ansible.builtin.file:
+    path: "/tool/{{ item }}"
+    state: directory
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: '0755'
+  loop: "{{ tool_subfolders }}"
+
+- name: Set /etc/environement
+  become: true
+  become_user: root
+  ansible.builtin.template:
+    src: "templates/environment.j2"
+    dest: "/etc/environment"
+    mode: '0644'
+
+- name: Include apt tasks
+  ansible.builtin.import_tasks: apt.yml
+  when: ansible_os_family == 'Debian'

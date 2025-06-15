@@ -1,0 +1,9 @@
+---
+- name: Pull Git repository
+  ansible.builtin.git:
+    repo: "{{ item.repo }}"
+    dest: "{{ item.path }}"
+    version: "{{ item.branch }}"
+  loop: "{{ git_repo }}"
+  loop_control:
+    label: "{{ item.name }}"

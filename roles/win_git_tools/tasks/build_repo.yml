@@ -44,10 +44,10 @@
     src: 'C:\Tool\LogsAnalysis\hayabusa\hayabusa.exe'
     dest: 'C:\Tool\KapeFiles\Modules\bin\hayabusa.exe'
     remote_src: true
-  when: hayabusa_exist.stat.exists or (hayabusa_exist_after_build is defined and hayabusa_exist_after_build.stat.exists)
+  when: "hayabusa_exist.stat.exists or (hayabusa_exist_after_build is defined and hayabusa_exist_after_build.stat.exists)"
 
 - name: Update hayabusa rules if hayabusa.exe exists
   ansible.windows.win_shell: 'C:\Tool\LogsAnalysis\hayabusa\hayabusa.exe update-rules'
   args:
     chdir: C:\Tool\LogsAnalysis\hayabusa
-  when: hayabusa_exist.stat.exists or (hayabusa_exist_after_build is defined and hayabusa_exist_after_build.stat.exists)
+  when: "hayabusa_exist.stat.exists or (hayabusa_exist_after_build is defined and hayabusa_exist_after_build.stat.exists)"

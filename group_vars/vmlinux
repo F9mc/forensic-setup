@@ -1,0 +1,17 @@
+---
+tool_subfolders:
+  - Misc
+  - MemoryAnalysis
+  - MalwareAnalysis
+  - RegistryAnalysis
+  - MobileArtefacts
+  - ThreatIntel
+  - LogsAnalysis
+path_variables:
+  - /tool/Misc
+  - /tool/MemoryAnalysis
+  - /tool/MalwareAnalysis
+  - /tool/RegistryAnalysis
+  - /tool/MobileArtefacts
+  - /tool/ThreatIntel
+  - /tool/LogsAnalysis

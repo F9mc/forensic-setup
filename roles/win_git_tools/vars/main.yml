@@ -33,7 +33,7 @@ git_repo:
     path: C:\Tool\RegistryAnalysis\RegRipper
     branch: master
   - name: Hayabusa
-    repo: https://github.com/Yamato-Security/hayabusa.git
+    repo: https://github.com/Yamato-Security/hayabusa
     path: c:\Tool\LogsAnalysis\hayabusa
     branch: main
   - name: chainsaw
@@ -43,4 +43,8 @@ git_repo:
   - name: EXTX-SAMPLES
     repo: https://github.com/sbousseaden/EVTX-ATTACK-SAMPLES
     path: C:\Tool\LogsAnalysis\EVTX-ATTACK-SAMPLES
+    branch: master
+  - name: Jarm
+    repo: https://github.com/salesforce/jarm
+    path: C:\Tool\ThreatIntel\Jarm
     branch: master

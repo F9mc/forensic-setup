@@ -1,0 +1,19 @@
+---
+- name: "Update apt cache"
+  become: true
+  become_user: root
+  ansible.builtin.apt:
+    update_cache: true
+
+- name: Upgrade apt packages
+  become: true
+  become_user: root
+  ansible.builtin.apt:
+    upgrade: dist
+
+- name: "Install packages with apt"
+  become: true
+  become_user: root
+  ansible.builtin.apt:
+    name: "{{ apt_packages }}"
+    state: present

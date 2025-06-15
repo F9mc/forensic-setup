@@ -1,0 +1,8 @@
+---
+- name: Copy binaries/ into Kape/
+  ansible.windows.win_copy:
+    src: binaries/KapeFiles/
+    dest: C:\Tool\KapeFiles
+    remote_src: false
+    recursive: true
+    ignore_errors: true

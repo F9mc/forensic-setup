@@ -1,0 +1,34 @@
+---
+git_repo:
+  - name: Dotfiles
+    repo: https://github.com/F9mc/dotfiles
+    path: /home/{{ ansible_user }}/dotfiles
+    branch: main
+  - name: Volatility3
+    repo: https://github.com/volatilityfoundation/volatility3.git
+    path: /tool/MemoryAnalysis/volatility3
+    branch: stable
+  - name: Volatility2
+    repo: https://github.com/volatilityfoundation/volatility.git
+    path: /tool/MemoryAnalysis/volatility
+    branch: master
+  - name: ALEAPP
+    repo: https://github.com/abrignoni/ALEAPP
+    path: /tool/MobileArtefacts/ALEAPP
+    branch: main
+  - name: Yara-x
+    repo: https://github.com/VirusTotal/yara-x
+    path: /tool/MalwareAnalysis/yara-x
+    branch: main
+  - name: SigmaHQ
+    repo: https://github.com/SigmaHQ/sigma
+    path: /tool/LogsAnalysis/sigma
+    branch: master
+  - name: LogonTracer
+    repo: https://github.com/JPCERTCC/LogonTracer
+    path: /tool/LogsAnalysis/sigma
+    branch: master
+  - name: Jarm
+    repo: https://github.com/salesforce/jarm
+    path: /tool/ThreatIntel/Jarm
+    branch: master

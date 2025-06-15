@@ -1,5 +1,4 @@
 ---
-
 - name: "Check if repo exists"
   ansible.windows.win_stat:
     path: '{{ item.path }}\.git'

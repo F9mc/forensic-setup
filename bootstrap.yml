@@ -1,28 +1,38 @@
 ---
-- name: Bootstrap environment
-  hosts: all
+- name: Deploying Windows-Forensic environment
+  hosts: vmwindows
   tasks:
     - name: "Base setup"
-      when: ansible_distribution ~ '^(?!Windows).*'
       ansible.builtin.import_role:
-        name: base_setup
+        name: win_base_setup
 
     - name: "Chocolatey"
-      when: ansible_distribution ~ '^(?!Windows).*'
       ansible.builtin.import_role:
         name: chocolatey
 
     - name: "Git Tools"
-      when: ansible_distribution ~ '^(?!Windows).*'
       ansible.builtin.import_role:
-        name: git_tools
+        name: win_git_tools
 
     - name: "Nirsoft"
-      when: ansible_distribution ~ '^(?!Windows).*'
       ansible.builtin.import_role:
         name: nirsoft
 
     - name: "File Setup"
-      when: ansible_distribution ~ '^(?!Windows).*'
       ansible.builtin.import_role:
-        name: file_setup
+        name: win_file_setup
+
+- name: Deploying Linux-Forensic environment
+  hosts: vmlinux
+  tasks:
+    - name: "Base setup"
+      ansible.builtin.import_role:
+        name: lin_base_setup
+
+    - name: "Git Tools"
+      ansible.builtin.import_role:
+        name: lin_git_tools
+
+    - name: "File Setup"
+      ansible.builtin.import_role:
+        name: lin_file_setup

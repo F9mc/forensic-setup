@@ -1,0 +1,12 @@
+---
+apt_packages:
+  - git
+  - curl
+  - wget
+  - vim
+  - htop
+  - python3-pip
+  - python3-venv
+  - unzip
+  - jq
+  - ripgrep

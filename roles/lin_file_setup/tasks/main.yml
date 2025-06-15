@@ -1,0 +1,24 @@
+---
+- name: Render bookmarks file
+  ansible.builtin.template:
+    src: "templates/bookmarks.html.j2"
+    dest: "/tool/bookmarks.html"
+    mode: '0644'
+
+- name: Copy README.txt to /Tool
+  ansible.builtin.copy:
+    src: "README.md"
+    dest: "/tool/README.md"
+    mode: '0644'
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    remote_src: false
+
+
+- name: Set /etc/environement
+  become: true
+  become_user: root
+  ansible.builtin.template:
+    src: "templates/environment.j2"
+    dest: "/etc/environment"
+    mode: '0644'
