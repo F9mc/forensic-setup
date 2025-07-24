@@ -10,3 +10,5 @@ apt_packages:
   - unzip
   - jq
   - ripgrep
+  - perl
+  - sleuthkit

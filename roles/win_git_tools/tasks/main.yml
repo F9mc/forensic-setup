@@ -39,3 +39,6 @@
 
 - name: Include Kape tasks
   ansible.builtin.import_tasks: kape.yml
+
+- name: Other tools
+  ansible.builtin.import_tasks: other_tools.yml

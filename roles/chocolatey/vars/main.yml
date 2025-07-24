@@ -13,10 +13,10 @@ chocolatey_packages:
   - dbeaver
   - sqlitebrowser
   - bat
-  - exiftool
   - wireshark
   - openvpn
   - jq
   - rust
   - go
   - mingw
+  - strawberryperl

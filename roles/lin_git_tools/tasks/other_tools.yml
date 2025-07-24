@@ -1,0 +1,6 @@
+---
+- name: Get DeXday
+  get_url:
+    url: https://hexacorn.com/d/DeXRAY.pl
+    dest: /tool/MalwareAnalysis/DeXRAY.pl
+    mode: "0644"

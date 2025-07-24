@@ -1,0 +1,5 @@
+---
+- name: "Get DeXday"
+  ansible.windows.win_get_url:
+    url: https://hexacorn.com/d/DeXRAY.pl
+    dest: C:\Tool\MalwareAnalysis\DeXRAY.pl
