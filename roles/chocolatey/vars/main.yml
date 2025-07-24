@@ -5,7 +5,7 @@ chocolatey_packages:
   - vscode
   - googlechrome
   - firefox
-  - brave
+  - tor-browser
   - 7zip
   - ripgrep
   - powertoys
