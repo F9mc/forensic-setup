@@ -34,6 +34,8 @@ path_variables:
 powershell_aliases:
   - alias: "python3"
     value: "C:\\Python311\\python3.11.exe"
+  - alias: "py"
+    value: "C:\\Python311\\python3.11.exe"
   - alias: "python2"
     value: "C:\\Python27\\python.exe"
   - alias: cat
