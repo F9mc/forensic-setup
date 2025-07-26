@@ -6,3 +6,33 @@
     remote_src: false
     recursive: true
     ignore_errors: true
+
+- name: "Get Get-ChainsawSigmaRules.ps1"
+  ansible.windows.win_get_url:
+    url: https://raw.githubusercontent.com/AndrewRathbun/DFIRPowerShellScripts/refs/heads/main/KAPE/Get-ChainsawSigmaRules.ps1
+    dest: C:\Tool\KapeFiles\Modules\bin\Get-ChainsawSigmaRules.ps1
+
+- name: "Get KAPE/MFTECmd$J$MFTParser.ps1"
+  ansible.windows.win_get_url:
+    url: https://raw.githubusercontent.com/AndrewRathbun/DFIRPowerShellScripts/refs/heads/main/KAPE/MFTECmd%24J%24MFTParser.ps1
+    dest: C:\Tool\KapeFiles\Modules\bin\KAPE/MFTECmd$J$MFTParser.ps1
+
+- name: "Get KAPE/Move-KAPEConsoleHost_history.ps1"
+  ansible.windows.win_get_url:
+    url: https://raw.githubusercontent.com/AndrewRathbun/DFIRPowerShellScripts/refs/heads/main/KAPE/Move-KAPEConsoleHost_history.ps1
+    dest: C:\Tool\KapeFiles\Modules\bin\KAPE/Move-KAPEConsoleHost_history.ps1
+
+- name: "Get KAPE/Parse-MatterMostDownloadsJson.ps1"
+  ansible.windows.win_get_url:
+    url: https://raw.githubusercontent.com/AndrewRathbun/DFIRPowerShellScripts/refs/heads/main/KAPE/Parse-MatterMostDownloadsJson.ps1
+    dest: C:\Tool\KapeFiles\Modules\bin\KAPE/Parse-MatterMostDownloadsJson.ps1
+
+- name: "Get KAPE/SRUM-Repair.ps1"
+  ansible.windows.win_get_url:
+    url: https://raw.githubusercontent.com/AndrewRathbun/DFIRPowerShellScripts/refs/heads/main/KAPE/SRUM-Repair.ps1
+    dest: C:\Tool\KapeFiles\Modules\binKAPE/SRUM-Repair.ps1
+
+- name: "Get SUM-Repair.ps1"
+  ansible.windows.win_get_url:
+    url: https://raw.githubusercontent.com/AndrewRathbun/DFIRPowerShellScripts/refs/heads/main/KAPE/SUM-Repair.ps1
+    dest: C:\Tool\KapeFiles\Modules\bin\SUM-Repair.ps1
